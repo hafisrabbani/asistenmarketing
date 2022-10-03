@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <title>Asisten Marketing</title>
+    <link href="{{ asset('clients/assets/images/logokuning.png') }}" rel="icon">
+    <link href="{{ asset('clients/assets/images/logokuning.png') }}" rel="apple-touch-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('clients/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{{ asset('clients/assets/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('clients/assets/css/templatemo-space-dynamic.css') }}">
+    <link rel="stylesheet" href="{{ asset('clients/assets/css/animated.css') }}">
+    <link rel="stylesheet" href="{{ asset('clients/assets/css/owl.css') }}">
+    <!---->
+</head>
+
+<body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="index.html" class="logo">
+                            <img src="{{ asset('clients/assets/images/logoasistenmarketing.png') }}" alt="">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="route('clients.index')"
+                                    class="{{ (url()->current() == route('clients.index')) ? 'active' : '' }}">Home</a>
+                            </li>
+                            <li class="scroll-to-section"><a href="{{ route('clients.search.index') }}"
+                                    class="{{ (url()->current() == route('clients.search.index')) ? 'active' : '' }}">Cari
+                                    Barang</a>
+                            </li>
+                            <li class="scroll-to-section"><a href="#services"
+                                    class="btn btn-warning text-white rounded px-3 py-0">Login</a>
+                            </li>
+                            <!-- <li class="scroll-to-section"><a href="#portfolio">Pilihan</a></li> -->
+                            <!-- <li class="scroll-to-section"><a href="#contact">Pesan</a></li> -->
+                            <li class="scroll-to-section">
+                            </li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+
+
+    <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-6 align-self-center">
+                            <div class="left-content header-text wow fadeInLeft" data-wow-duration="1s"
+                                data-wow-delay="1s">
+                                <h6>Pengen untung lewat e-commerce?</h6>
+                                <h2>Tapi bingung jelasin <em>produkmu </em>di kolom <span>deskripsi?</span></h2>
+                                <p>85% orang beli karena deskripsi dan foto yang menarik. Pengen bisa jelasin produk
+                                    tanpa riset panjang dan ribet? </p>
+                                <form id="search" action="#" method="GET">
+                                    <fieldset>
+                                        <input type="address" name="address" class="email"
+                                            placeholder="Apa nama produknya?" autocomplete="on" required>
+                                    </fieldset>
+                                    <fieldset>
+                                        <button type="submit" class="main-button">Cari Deskripsi</button>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                                <img src="{{ asset('clients/assets/images/banner-right-image.png') }}"
+                                    alt="team meeting">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="services" class="our-services section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 align-self-center  wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.2s">
+                    <div class="left-image">
+                        <img src="{{ asset('clients/assets/images/services-left-image.png') }}" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.2s">
+                    <div class="section-heading">
+                        <h2>Pasti 10x lebih <em>cepat</em> <br /> &amp; 10x lebih <span>baik</span></h2>
+                        <p>Cari produk dan temukan deskripsi terbaik dengan sekali klik! <br /> Gak perlu buka satu-satu
+                            web yang lain. Deskripsi yang kita berikan dikurasi oleh profesional berdasarkan 10 web
+                            terbaik pilihan, pembeli auto ngerti dan nggak banyak cing-cong buat beli!</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="first-bar progress-skill-bar">
+                                <h4>Kecepatan </h4>
+                                <span>10x</span>
+                                <div class="filled-bar"></div>
+                                <div class="full-bar"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="second-bar progress-skill-bar">
+                                <h4>Kualitas</h4>
+                                <span>10x</span>
+                                <div class="filled-bar"></div>
+                                <div class="full-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="portfolio" class="our-portfolio section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading  wow bounceIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <h2>Pilih yang kamu <span>butuh</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <a href="#">
+                        <div class="item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+                            <div class="hidden-content">
+                                <h4>Deskripsi Produk</h4>
+                                <p>Banyak yang tanya tapi nggak beli? Perbaiki deskripsimu di sini!</p>
+                            </div>
+                            <div class="showed-content">
+                                <img src="{{ asset('clients/assets/images/copywriting.jpg') }}" alt="">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm">
+                    <a href="#">
+                        <div class="item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+                            <div class="hidden-content">
+                                <h4>Foto Produk</h4>
+                                <p>Yakin fotomu udah menarik? Buat pelanggan lebih tertarik!</p>
+                            </div>
+                            <div class="showed-content">
+                                <img src="{{ asset('clients/assets/images/jasafoto.jpg') }}" alt="">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm">
+                    <a href="#">
+                        <div class="item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+                            <div class="hidden-content">
+                                <h4>Landing Page</h4>
+                                <p>Belum punya website? pantes orang belum percaya. Pesan sekarang!</p>
+                            </div>
+                            <div class="showed-content">
+                                <img src="{{ asset('clients/assets/images/landingpage.jpg') }}" alt="">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" class="contact-us section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 align-self-center wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.25s">
+                    <div class="section-heading">
+                        <h2>Konsultasikan Aja Dulu Masalah E-commercemu</h2>
+                        <p>Kita sambung lewat chat ya, pasti dibalas kog...</p>
+                        <div class="phone-info">
+                            <h4>WhatsApp : <span><a
+                                        href="https://wa.me/62895621078095?text=Saya%20butuh%20layanan%20asisten%20marketing"><i
+                                            class="fa fa-phone"></i> +62 895-621-078-095</a></span></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0.25s">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.25s">
+                    <p>© Copyright 2022 AsistenMarketing.com. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="{{ asset('clients/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('clients/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('clients/assets/js/owl-carousel.js') }}"></script>
+    <script src="{{ asset('assets/js/animation.js') }}"></script>
+    <script src="{{ asset('clients/assets/js/imagesloaded.js') }}"></script>
+    <script src="{{ asset('clients/assets/js/templatemo-custom.js') }}"></script>
+
+</body>
+
+</html>

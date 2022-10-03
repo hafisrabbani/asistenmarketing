@@ -24,7 +24,7 @@
         <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $result->nama_produk }}</td>
-            <td>{{ $result->id_merk }}</td>
+            <td>{{ $result->merk->name }}</td>
             <td>
                 <a href="" class="btn btn-primary"><i class="fas fa-info"></i></a>
                 <a href="{{ route('writter.product.edit',$result->id) }}" class="btn btn-warning"><i

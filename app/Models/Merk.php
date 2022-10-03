@@ -14,5 +14,6 @@ class Merk extends Model
     public function products()
     {
         return $this->hasMany(Product::class, 'id_merk', 'id');
+        // return $this->morphMany(Product::class, 'merk');
     }
 }

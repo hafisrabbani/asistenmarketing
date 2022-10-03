@@ -3,7 +3,8 @@
         <div class="sidebar-header position-relative">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo">
-                    <a href="index.html"><i class="fas fa-user"></i></a>
+                    <a href="index.html"><img src="{{ asset('clients/assets/images/logoasistenmarketing.png') }}"
+                            alt=""></a>
                 </div>
                 <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -64,21 +65,12 @@
                 </li>
                 <li class="sidebar-title">Submenu</li>
 
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-file-earmark-spreadsheet-fill"></i>
-                        <span>Datatables</span>
+                <li class="sidebar-item">
+                    <a href="{{ route('writter.logout') }}" class='sidebar-link'>
+                        <i class="bi bi-wrench"></i>
+                        <span>settings</span>
                     </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="table-datatable.html">Datatable</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="table-datatable-jquery.html">Datatable (jQuery)</a>
-                        </li>
-                    </ul>
                 </li>
-
                 <li class="sidebar-item">
                     <a href="{{ route('writter.logout') }}" class='sidebar-link'>
                         <i class="bi bi-arrow-left-square-fill"></i>

@@ -45,13 +45,31 @@ class MerkController extends Controller
             return response()->json([
                 'status' => 'error',
                 'message' => 'Merk tidak dapat dihapus karena masih memiliki produk'
-            ]);
+            ], 400);
         }
 
         $merk->delete();
         return response()->json([
             'status' => 'success',
             'message' => 'Merk berhasil dihapus'
+        ]);
+    }
+
+    public function edit(Request $request)
+    {
+        $id = $request->validate([
+            'id' => 'required|integer'
+        ], [
+            'id.required' => 'ID merk harus diisi',
+            'id.integer' => 'ID merk harus berupa angka'
+        ]);
+
+        $merk = Merk::find($id['id']);
+        $merk->name = $request->name;
+        $merk->save();
+        return response()->json([
+            'status' => 'success',
+            'data' => $merk
         ]);
     }
 }

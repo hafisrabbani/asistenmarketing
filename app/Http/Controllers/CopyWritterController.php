@@ -18,14 +18,16 @@ class CopyWritterController extends Controller
 
     public function insert()
     {
-        return view('writter.copywrite.insert');
+        return view('writter.copywrite.insert', [
+            'merks' => \App\Models\Merk::all()
+        ]);
     }
 
     public function insertProduct(int $writterId, array $params): int
     {
         $product = Product::create([
             'id_writter' => $writterId,
-            'id_merk' => 1,
+            'id_merk' => $params['merk'],
             'nama_produk' => $params['name'],
             'slug' => Str::slug($params['name']),
             'deskripsi' => $params['description'],
@@ -40,11 +42,13 @@ class CopyWritterController extends Controller
             'nama_produk' => 'required|unique:products,nama_produk',
             'description' => 'required',
             'images' => 'required',
+            'merk' => 'required',
             'images.*' => 'mimes:jpg,jpeg,png|max:2048'
         ], [
             'nama_produk.required' => 'Nama produk harus diisi',
             'nama_produk.unique' => 'Nama produk sudah ada',
             'description.required' => 'Deskripsi produk harus diisi',
+            'merk.required' => 'Merk harus dipilih',
             'images.required' => 'Gambar produk harus diisi',
             'images.mimes' => 'File yang diupload harus berupa gambar',
             'images.max' => 'Ukuran file yang diupload maksimal 2MB',
@@ -54,6 +58,7 @@ class CopyWritterController extends Controller
         $product = $this->insertProduct($request->session()->get('writterId'), [
             'name' => $request->nama_produk,
             'description' => $request->description,
+            'merk' => $request->merk
         ]);
 
         $id = $product;
@@ -84,6 +89,7 @@ class CopyWritterController extends Controller
         return view('writter.copywrite.edit', [
             'product' => $product,
             'images' => $images,
+            'merks' => \App\Models\Merk::all()
         ]);
     }
 
@@ -92,17 +98,19 @@ class CopyWritterController extends Controller
         $request->validate([
             'nama_produk' => 'required|unique:products,nama_produk,' . $id,
             'description' => 'required',
+            'merk' => 'required',
             'images.*' => 'mimes:jpg,jpeg,png|max:2048'
         ], [
             'nama_produk.required' => 'Nama produk harus diisi',
             'nama_produk.unique' => 'Nama produk sudah ada',
             'description.required' => 'Deskripsi produk harus diisi',
+            'merk.required' => 'Merk harus dipilih',
             'images.mimes' => 'File yang diupload harus berupa gambar',
             'images.max' => 'Ukuran file yang diupload maksimal 2MB',
         ]);
         $product = Product::where('id', $id)->update([
             'nama_produk' => $request->nama_produk,
-            'id_merk' => 1,
+            'id_merk' => $request->merk,
             'id_writter' => $request->session()->get('writterId'),
             'slug' => Str::slug($request->nama_produk),
             'deskripsi' => $request->description,

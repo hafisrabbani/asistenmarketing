@@ -3,6 +3,7 @@
 use App\Http\Controllers\WritterController as Writter;
 use App\Http\Controllers\CopyWritterController as Copy;
 use App\Http\Controllers\MerkController as Merk;
+use App\Http\Controllers\ClientsController as Clients;
 use Illuminate\Support\Facades\Route;
 
 
@@ -36,6 +37,12 @@ Route::group([
     });
 });
 
-Route::get('/', function () {
-    return view('clients.template.main');
-});
+Route::get('/', [Clients::class, 'index'])->name('clients.index');
+Route::get('/search/{name?}', [Clients::class, 'searchIndex'])->name('clients.search.index');
+Route::get('/produk/detail/{id}', [Clients::class, 'detail'])->name('clients.detail');
+Route::post('/search', [Clients::class, 'query'])->name('clients.search.query');
+Route::get('/test', [Clients::class, 'test'])->name('clients.test');
+
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

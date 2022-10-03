@@ -19,6 +19,19 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
+                        <label>Merk : </label>
+                        <select name="merk" class="form-control">
+                            @foreach($merks as $merk)
+                            <option value="{{ $merk->id }}" {{ ($product->id_merk == $merk->id) ? 'selected' : '' }}>{{
+                                $merk->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
                         <label>Deskripsi : </label>
                         <textarea name="description" id="editor"
                             class="form-control">{!! $product->deskripsi !!}</textarea>

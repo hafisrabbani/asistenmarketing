@@ -28,11 +28,44 @@
             <td>{{ $loop->iteration }}</td>
             <td>{{ $result->name }}</td>
             <td>
-                <button class="btn btn-primary" type="button"><i class="fas fa-pen"></i></button>
-                <button type="button" class="btn btn-danger" onclick="deleteData()"><i
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#editModal{{ $result->id }}">
+                    <i class="fas fa-pen"></i>
+                </button>
+                <button type="button" class="btn btn-danger" onclick="deleteData('{{ $result->id }}')"><i
                         class="fas fa-trash"></i></button>
             </td>
         </tr>
+
+        <!-- Edit Modal -->
+
+        <div class="modal fade" id="editModal{{ $result->id }}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Data Data</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="editForm">
+                            <input type="hidden" name="id" value="{{ $result->id }}">
+                            <div class="form-group">
+                                <label>Nama Merk</label>
+                                <input type="text" name="name" class="form-control" value="{{ $result->name }}">
+                            </div>
+                            <div class="modal-footer">
+                                <img src="{{ asset('loader.gif') }}" style="width: 50px;height: 50px; display: none;"
+                                    id="loader">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- End Edit Modal -->
         @endforeach
     </tbody>
 </table>
@@ -77,8 +110,8 @@
 <script>
     function deleteData(id) {
         swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this imaginary file!",
+            title: "Yakin?",
+            text: "Apakah anda yakin untuk menghapus data?",
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -101,6 +134,13 @@
                                 location.reload();
                             }, 2000);
                         },
+                        error: function (data) {
+                            swal({
+                                'title': 'Error',
+                                'text': data.responseJSON.message,
+                                'icon': 'error'
+                            });
+                        }
                     })
                 } else {
                     swal({
@@ -135,6 +175,56 @@
                 swal({
                     'title': 'Success',
                     'text': 'Berhasil Menambahkan Data',
+                    'icon': 'success'
+                });
+                setInterval(function () {
+                    location.reload();
+                }, 2000);
+            },
+            error: function (error) {
+                $('#submit').attr('disabled', false);
+                if (error.status == 422) {
+                    swal({
+                        'title': 'Error',
+                        'text': 'Error Validasi',
+                        'icon': 'error'
+                    });
+                    $.each(error.responseJSON.errors, function (i, error) {
+                        var el = $(document).find('[name="' + i + '"]');
+                        el.after($('<span style="color:red;" class="err">' + error[0] + '</span>'));
+                    });
+                } else if (error.status == 500) {
+                    swal({
+                        'title': 'Error',
+                        'text': 'Kesalahan Server',
+                        'icon': 'error'
+                    });
+                } else {
+                    swal({
+                        'title': 'Error',
+                        'text': error.responseJSON.message,
+                        'icon': 'error'
+                    });
+                }
+                $('#loader').hide();
+            }
+        });
+    });
+    $('.editForm').submit(function (e) {
+        e.preventDefault();
+        $('.err').remove();
+        $('#submit').attr('disabled', true);
+        $.ajax({
+            url: "{{ route('writter.merk.edit') }}",
+            type: "POST",
+            data: $(this).serialize(),
+            beforeSend: function () {
+                $('#loader').show();
+            },
+            success: function (response) {
+                swal({
+                    'title': 'Success',
+                    'text': 'Berhasil Mengubah Data',
                     'icon': 'success'
                 });
                 setInterval(function () {
